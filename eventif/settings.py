@@ -23,11 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = "django-insecure-0_^j(dyc#9xk@&p+rmfknr1(1((7)!4b@!xug!eba)$p*bu0p%"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = ['127.0.0.1', '.localhost', '.pythonanywhere.com']
+# DEBUG = True
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
+
+DEFAULT_FROM_EMAIL = 'contato@eventif.com.br'
+
+ALLOWED_HOSTS= config('ALLOWED_HOSTS', default=[], cast=Csv())
 
 
 # Application definition
@@ -39,8 +43,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'core',
-    'subscriptions',
+    "core",
+    "subscriptions",
 ]
 
 MIDDLEWARE = [
@@ -58,7 +62,7 @@ ROOT_URLCONF = "eventif.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": ['templates'],
+        "DIRS": ["templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -80,10 +84,10 @@ WSGI_APPLICATION = "eventif.wsgi.application"
 default_dburl = 'sqlite:///' + str(BASE_DIR / 'db.sqlite3')
 DATABASES = {
     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
-   # "default": {
-   #     "ENGINE": "django.db.backends.sqlite3",
-    #    "NAME": BASE_DIR / "db.sqlite3",
-    #}
+    # "default": {
+    #     "ENGINE": "django.db.backends.sqlite3",
+    #     "NAME": BASE_DIR / "db.sqlite3",
+    # }
 }
 
 
