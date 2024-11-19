@@ -18,10 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from core.views import home
 from subscriptions.views import subscribe, detail
+from contact.views import inicio
 
 urlpatterns = [
     path("", home),
     path('inscricao/', subscribe),
+    path('contact/', inicio),
     path('inscricao/<int:pk>/', detail),
     path("admin/", admin.site.urls),
 ]
