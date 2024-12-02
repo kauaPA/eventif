@@ -1,4 +1,9 @@
 from django.shortcuts import render
 
 def home (request):
-    return render(request, "index.html")
+    speakers = [
+        {'name': 'Grace Hopper', 'photo': 'https://abre.ai/hooper-pic'},
+        {'name': 'Alan Turing', 'photo': 'https://abre.ai/turing-pic'}
+
+    ]
+    return render(request, "index.html", {'speakers': speakers})
